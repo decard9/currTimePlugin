@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="CurrTime Category"
+            id="myTestPlugin.commands.category">
+      </category>
+      <command
+            name="Add CurrentDateTime"
+            categoryId="myTestPlugin.commands.category"
+            id="myTestPlugin.commands.curTimeCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="myTestPlugin.commands.curTimeCommand"
+            class="mytestplugin.handlers.SampleHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="myTestPlugin.commands.curTimeCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Current Time"
+               mnemonic="M"
+               id="myTestPlugin.menus.sampleMenu">
+            <command
+                  commandId="myTestPlugin.commands.curTimeCommand"
+                  mnemonic="S"
+                  id="myTestPlugin.menus.sampleCommand">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="myTestPlugin.toolbars.sampleToolbar">
+            <command
+                  commandId="myTestPlugin.commands.curTimeCommand"
+                  icon="icons/sample.gif"
+                  tooltip="Say hello world"
+                  id="myTestPlugin.toolbars.currTimeCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
